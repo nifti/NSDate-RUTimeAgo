@@ -7,16 +7,39 @@
 //
 
 #import "AppDelegate.h"
+#import "NSDate+RUTimeAgo.h"
+
+
+
+
 
 @interface AppDelegate ()
 
 @end
 
+
+
+
+
 @implementation AppDelegate
 
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+	NSDate* fiveSecondsAgo = [NSDate dateWithTimeIntervalSinceNow:-5.0f];
+	NSLog(@"fiveSecondsAgo: %@",[fiveSecondsAgo ru_timeAgoString]);
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Override point for customization after application launch.
+	NSDate* fiveMinutesAgo = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 5.0f)];
+	NSLog(@"fiveMinutesAgo: %@",[fiveMinutesAgo ru_timeAgoString]);
+
+	NSDate* fiveHoursAgo = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 60.0f * 5.0f)];
+	NSLog(@"fiveHoursAgo: %@",[fiveHoursAgo ru_timeAgoString]);
+	
+	NSDate* fiveDaysAgo = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 60.0f * 24.0f * 5.0f)];
+	NSLog(@"fiveDaysAgo: %@",[fiveDaysAgo ru_timeAgoString]);
+	
+	NSDate* fourOrFiveMonthsAgo = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 60.0f * 24.0f * 30.0f * 5.0f)];
+	NSLog(@"fourOrFiveMonthsAgo: %@",[fourOrFiveMonthsAgo ru_timeAgoString]);
+	
 	return YES;
 }
 

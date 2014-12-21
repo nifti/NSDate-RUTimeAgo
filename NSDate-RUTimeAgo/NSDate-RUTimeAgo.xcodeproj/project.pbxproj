@@ -14,6 +14,7 @@
 		43058F771A4630FB00983040 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43058F761A4630FB00983040 /* Images.xcassets */; };
 		43058F7A1A4630FB00983040 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43058F781A4630FB00983040 /* LaunchScreen.xib */; };
 		43058F861A4630FB00983040 /* NSDate_RUTimeAgoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43058F851A4630FB00983040 /* NSDate_RUTimeAgoTests.m */; };
+		43058F971A46321100983040 /* NSDate+RUTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 43058F921A46321100983040 /* NSDate+RUTimeAgo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,12 @@
 		43058F7F1A4630FB00983040 /* NSDate-RUTimeAgoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NSDate-RUTimeAgoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43058F841A4630FB00983040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43058F851A4630FB00983040 /* NSDate_RUTimeAgoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSDate_RUTimeAgoTests.m; sourceTree = "<group>"; };
+		43058F911A46321100983040 /* NSDate+RUTimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RUTimeAgo.h"; sourceTree = "<group>"; };
+		43058F921A46321100983040 /* NSDate+RUTimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RUTimeAgo.m"; sourceTree = "<group>"; };
+		43058F941A46321100983040 /* RUConditionalReturn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUConditionalReturn.h; sourceTree = "<group>"; };
+		43058F951A46321100983040 /* RUConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUConstants.h; sourceTree = "<group>"; };
+		43058F961A46321100983040 /* RUProtocolOrNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUProtocolOrNil.h; sourceTree = "<group>"; };
+		43A726851A468D5D00FA0A13 /* NSDate_RUTimeAgoFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDate_RUTimeAgoFormatter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +90,13 @@
 			children = (
 				43058F6D1A4630FB00983040 /* AppDelegate.h */,
 				43058F6E1A4630FB00983040 /* AppDelegate.m */,
-				43058F701A4630FB00983040 /* ViewController.h */,
-				43058F711A4630FB00983040 /* ViewController.m */,
-				43058F731A4630FB00983040 /* Main.storyboard */,
+				43058F8F1A46321100983040 /* Code */,
 				43058F761A4630FB00983040 /* Images.xcassets */,
 				43058F781A4630FB00983040 /* LaunchScreen.xib */,
+				43058F731A4630FB00983040 /* Main.storyboard */,
 				43058F691A4630FB00983040 /* Supporting Files */,
+				43058F701A4630FB00983040 /* ViewController.h */,
+				43058F711A4630FB00983040 /* ViewController.m */,
 			);
 			path = "NSDate-RUTimeAgo";
 			sourceTree = "<group>";
@@ -117,6 +125,43 @@
 				43058F841A4630FB00983040 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43058F8F1A46321100983040 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				43058F901A46321100983040 /* NSDate-RUTimeAgo */,
+				43058F931A46321100983040 /* ResplendentUtilities */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		43058F901A46321100983040 /* NSDate-RUTimeAgo */ = {
+			isa = PBXGroup;
+			children = (
+				43A726841A468D0E00FA0A13 /* NSDate_RUTimeAgoFormatter */,
+				43058F911A46321100983040 /* NSDate+RUTimeAgo.h */,
+				43058F921A46321100983040 /* NSDate+RUTimeAgo.m */,
+			);
+			path = "NSDate-RUTimeAgo";
+			sourceTree = "<group>";
+		};
+		43058F931A46321100983040 /* ResplendentUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				43058F941A46321100983040 /* RUConditionalReturn.h */,
+				43058F951A46321100983040 /* RUConstants.h */,
+				43058F961A46321100983040 /* RUProtocolOrNil.h */,
+			);
+			path = ResplendentUtilities;
+			sourceTree = "<group>";
+		};
+		43A726841A468D0E00FA0A13 /* NSDate_RUTimeAgoFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				43A726851A468D5D00FA0A13 /* NSDate_RUTimeAgoFormatter.h */,
+			);
+			path = NSDate_RUTimeAgoFormatter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43058F971A46321100983040 /* NSDate+RUTimeAgo.m in Sources */,
 				43058F721A4630FB00983040 /* ViewController.m in Sources */,
 				43058F6F1A4630FB00983040 /* AppDelegate.m in Sources */,
 				43058F6C1A4630FB00983040 /* main.m in Sources */,
@@ -297,7 +343,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -333,7 +379,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -346,6 +392,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "NSDate-RUTimeAgo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -356,6 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "NSDate-RUTimeAgo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -414,6 +462,7 @@
 				43058F8B1A4630FB00983040 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		43058F8C1A4630FB00983040 /* Build configuration list for PBXNativeTarget "NSDate-RUTimeAgoTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +471,7 @@
 				43058F8E1A4630FB00983040 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
