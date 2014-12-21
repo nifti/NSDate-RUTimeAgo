@@ -24,8 +24,13 @@ typedef enum{
 
 
 
+
 @protocol NSDate_RUTimeAgoFormatter <NSObject>
 
--(NSString*)ruTimeAgoFormatterForCalendarUnit:(NSDate_RU_CalendarUnit)calendarUnit;
+@required
+-(NSString*)ru_timeAgoFormatterStringComponentForCalendarUnit:(NSDate_RU_CalendarUnit)calendarUnit;
+
+@optional
+-(NSString*)ru_timeAgoFormatterStringComponentPluralForCalendarUnit:(NSDate_RU_CalendarUnit)calendarUnit;
 
 @end

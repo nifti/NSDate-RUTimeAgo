@@ -10,6 +10,7 @@
 #import "RUConstants.h"
 #import "RUProtocolOrNil.h"
 #import "RUConditionalReturn.h"
+#import "NSDate_RUTimeAgoFormatter_Abbreviated.h"
 
 
 
@@ -22,7 +23,6 @@
 -(NSDateComponents*)ru_timoAgoDateComponentsFromDate;
 
 +(NSInteger)ru_timeAgoStringAmountWithCalendarUnitType:(NSDate_RU_CalendarUnit)calendarUnit dateCompontents:(NSDateComponents*)comps;
-+(NSString*)ru_timeAgoStringSuffixWithCalendarUnitType:(NSDate_RU_CalendarUnit)calendarUnit;
 
 +(NSDate_RU_CalendarUnit)ru_timeAgoMinCalendarUnitWithDateCompontents:(NSDateComponents*)comps;
 
@@ -49,33 +49,6 @@
 {
 	NSInteger const gregorianComponents = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
 	return [[self.class ru_staticGregorianCalendar] components:gregorianComponents fromDate:self toDate:[NSDate date] options:0];
-}
-
-+(NSString*)ru_timeAgoStringSuffixWithCalendarUnitType:(NSDate_RU_CalendarUnit)calendarUnit
-{
-	switch (calendarUnit)
-	{
-		case NSDate_RU_CalendarUnitYear:
-			return @"y";
-
-		case NSDate_RU_CalendarUnitMonth:
-			return @"mo";
-
-		case NSDate_RU_CalendarUnitDay:
-			return @"d";
-
-		case NSDate_RU_CalendarUnitHour:
-			return @"h";
-
-		case NSDate_RU_CalendarUnitMinute:
-			return @"m";
-
-		case NSDate_RU_CalendarUnitSecond:
-			return @"s";
-	}
-
-	NSAssert(false, @"unhandled");
-	return nil;
 }
 
 +(NSInteger)ru_timeAgoStringAmountWithCalendarUnitType:(NSDate_RU_CalendarUnit)calendarUnit dateCompontents:(NSDateComponents*)comps
@@ -144,6 +117,7 @@
 
 @implementation NSDate (RUTimeAgo)
 
+#pragma mark - NSDate+RUTimeAgo
 -(NSString*)ru_timeAgoString
 {
 	return [self ru_timeAgoStringWithFormatter:nil];
@@ -156,10 +130,17 @@
 	NSDateComponents *comps = [self ru_timoAgoDateComponentsFromDate];
 	NSDate_RU_CalendarUnit calendarUnit = [self.class ru_timeAgoMinCalendarUnitWithDateCompontents:comps];
 
-	NSString* timeAgoString = (formatter == nil ?
-							   [self.class ru_timeAgoStringSuffixWithCalendarUnitType:calendarUnit] :
-							   [formatter ruTimeAgoFormatterForCalendarUnit:calendarUnit]);
 	long timeAgoStringAmount = [self.class ru_timeAgoStringAmountWithCalendarUnitType:calendarUnit dateCompontents:comps];
+
+	id<NSDate_RUTimeAgoFormatter> formatterToUse = (formatter ?: [self.class ru_timeAgoDefaultFormatter]);
+
+	NSString* timeAgoString = (((timeAgoStringAmount != 1) && ([formatterToUse respondsToSelector:@selector(ru_timeAgoFormatterStringComponentPluralForCalendarUnit:)]))?
+							   [formatterToUse ru_timeAgoFormatterStringComponentPluralForCalendarUnit:calendarUnit] :
+							   [formatterToUse ru_timeAgoFormatterStringComponentForCalendarUnit:calendarUnit]);
+//							   [formatterToUse ru_timeAgoFormatterStringComponentForCalendarUnit:calendarUnit] :
+//							   ([formatterToUse respondsToSelector:@selector(ru_timeAgoFormatterStringComponentPluralForCalendarUnit:)] ?
+//								[formatterToUse ru_timeAgoFormatterStringComponentPluralForCalendarUnit:calendarUnit] :
+//								RUStringWithFormat(@"%@s",[formatterToUse ru_timeAgoFormatterStringComponentForCalendarUnit:calendarUnit])));
 
 	return RUStringWithFormat(@"%li%@",timeAgoStringAmount,timeAgoString);
 }
@@ -190,6 +171,23 @@
 
 	NSAssert(false, @"unhandled");
 	return 0;
+}
+
+#pragma mark - ru_timeAgoDefaultFormatter
+static id<NSDate_RUTimeAgoFormatter> kNSDate_RUTimeAgo_timeAgoDefaultFormatter;
++(id<NSDate_RUTimeAgoFormatter>)ru_timeAgoDefaultFormatter
+{
+	if (kNSDate_RUTimeAgo_timeAgoDefaultFormatter == nil)
+	{
+		[self ru_setTimeAgoDefaultFormatter:[NSDate_RUTimeAgoFormatter_Abbreviated new]];
+	}
+
+	return kNSDate_RUTimeAgo_timeAgoDefaultFormatter;
+}
+
++(void)ru_setTimeAgoDefaultFormatter:(id<NSDate_RUTimeAgoFormatter>)formatter
+{
+	kNSDate_RUTimeAgo_timeAgoDefaultFormatter = formatter;
 }
 
 @end

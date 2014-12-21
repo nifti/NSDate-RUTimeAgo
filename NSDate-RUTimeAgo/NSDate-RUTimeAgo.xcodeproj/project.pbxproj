@@ -15,6 +15,8 @@
 		43058F7A1A4630FB00983040 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43058F781A4630FB00983040 /* LaunchScreen.xib */; };
 		43058F861A4630FB00983040 /* NSDate_RUTimeAgoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 43058F851A4630FB00983040 /* NSDate_RUTimeAgoTests.m */; };
 		43058F971A46321100983040 /* NSDate+RUTimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = 43058F921A46321100983040 /* NSDate+RUTimeAgo.m */; };
+		43A726891A468E4500FA0A13 /* NSDate_RUTimeAgoFormatter_Abbreviated.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A726881A468E4500FA0A13 /* NSDate_RUTimeAgoFormatter_Abbreviated.m */; };
+		43A7268C1A468FC200FA0A13 /* NSDate_RUTimeAgoFormatter_FullWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A7268B1A468FC200FA0A13 /* NSDate_RUTimeAgoFormatter_FullWord.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,10 @@
 		43058F951A46321100983040 /* RUConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUConstants.h; sourceTree = "<group>"; };
 		43058F961A46321100983040 /* RUProtocolOrNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RUProtocolOrNil.h; sourceTree = "<group>"; };
 		43A726851A468D5D00FA0A13 /* NSDate_RUTimeAgoFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDate_RUTimeAgoFormatter.h; sourceTree = "<group>"; };
+		43A726871A468E4500FA0A13 /* NSDate_RUTimeAgoFormatter_Abbreviated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDate_RUTimeAgoFormatter_Abbreviated.h; sourceTree = "<group>"; };
+		43A726881A468E4500FA0A13 /* NSDate_RUTimeAgoFormatter_Abbreviated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDate_RUTimeAgoFormatter_Abbreviated.m; sourceTree = "<group>"; };
+		43A7268A1A468FC200FA0A13 /* NSDate_RUTimeAgoFormatter_FullWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDate_RUTimeAgoFormatter_FullWord.h; sourceTree = "<group>"; };
+		43A7268B1A468FC200FA0A13 /* NSDate_RUTimeAgoFormatter_FullWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDate_RUTimeAgoFormatter_FullWord.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,10 @@
 		43A726841A468D0E00FA0A13 /* NSDate_RUTimeAgoFormatter */ = {
 			isa = PBXGroup;
 			children = (
+				43A726871A468E4500FA0A13 /* NSDate_RUTimeAgoFormatter_Abbreviated.h */,
+				43A726881A468E4500FA0A13 /* NSDate_RUTimeAgoFormatter_Abbreviated.m */,
+				43A7268A1A468FC200FA0A13 /* NSDate_RUTimeAgoFormatter_FullWord.h */,
+				43A7268B1A468FC200FA0A13 /* NSDate_RUTimeAgoFormatter_FullWord.m */,
 				43A726851A468D5D00FA0A13 /* NSDate_RUTimeAgoFormatter.h */,
 			);
 			path = NSDate_RUTimeAgoFormatter;
@@ -264,9 +274,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43A726891A468E4500FA0A13 /* NSDate_RUTimeAgoFormatter_Abbreviated.m in Sources */,
 				43058F971A46321100983040 /* NSDate+RUTimeAgo.m in Sources */,
 				43058F721A4630FB00983040 /* ViewController.m in Sources */,
 				43058F6F1A4630FB00983040 /* AppDelegate.m in Sources */,
+				43A7268C1A468FC200FA0A13 /* NSDate_RUTimeAgoFormatter_FullWord.m in Sources */,
 				43058F6C1A4630FB00983040 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

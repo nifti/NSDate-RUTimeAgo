@@ -8,12 +8,15 @@
 
 #import "AppDelegate.h"
 #import "NSDate+RUTimeAgo.h"
+#import "NSDate_RUTimeAgoFormatter_FullWord.h"
 
 
 
 
 
 @interface AppDelegate ()
+
+-(void)printSomeDates;
 
 @end
 
@@ -25,20 +28,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	NSDate* fiveSecondsAgo = [NSDate dateWithTimeIntervalSinceNow:-5.0f];
-	NSLog(@"fiveSecondsAgo: %@",[fiveSecondsAgo ru_timeAgoString]);
+	[self printSomeDates];
 
-	NSDate* fiveMinutesAgo = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 5.0f)];
-	NSLog(@"fiveMinutesAgo: %@",[fiveMinutesAgo ru_timeAgoString]);
+	[NSDate ru_setTimeAgoDefaultFormatter:[NSDate_RUTimeAgoFormatter_FullWord new]];
 
-	NSDate* fiveHoursAgo = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 60.0f * 5.0f)];
-	NSLog(@"fiveHoursAgo: %@",[fiveHoursAgo ru_timeAgoString]);
-	
-	NSDate* fiveDaysAgo = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 60.0f * 24.0f * 5.0f)];
-	NSLog(@"fiveDaysAgo: %@",[fiveDaysAgo ru_timeAgoString]);
-	
-	NSDate* fourOrFiveMonthsAgo = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 60.0f * 24.0f * 30.0f * 5.0f)];
-	NSLog(@"fourOrFiveMonthsAgo: %@",[fourOrFiveMonthsAgo ru_timeAgoString]);
+	[self printSomeDates];
 	
 	return YES;
 }
@@ -63,6 +57,63 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - printSomeDates
+-(void)printSomeDates
+{
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+
+	NSDate* oneSecondAgo = [NSDate dateWithTimeIntervalSinceNow:-1.0f];
+	NSLog(@"oneSecondAgo: %@",[oneSecondAgo ru_timeAgoString]);
+	
+	NSDate* oneMinuteAgo = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 1.0f)];
+	NSLog(@"oneMinuteAgo: %@",[oneMinuteAgo ru_timeAgoString]);
+	
+	NSDate* oneHourAgo = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 60.0f * 1.0f)];
+	NSLog(@"oneHourAgo: %@",[oneHourAgo ru_timeAgoString]);
+	
+	NSDate* oneDayAgo = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 60.0f * 24.0f * 1.0f)];
+	NSLog(@"oneDayAgo: %@",[oneDayAgo ru_timeAgoString]);
+
+	NSDateComponents* oneMonthAgoDateComponents = [NSDateComponents new];
+	[oneMonthAgoDateComponents setMonth:-1];
+
+	NSDate* oneMonthAgo = [gregorian dateByAddingComponents:oneMonthAgoDateComponents toDate:[NSDate date] options:0];
+	NSLog(@"oneMonthAgo: %@",[oneMonthAgo ru_timeAgoString]);
+
+	NSDateComponents* oneYearAgoDateComponents = [NSDateComponents new];
+	[oneYearAgoDateComponents setYear:-1];
+	
+	NSDate* oneYearAgo = [gregorian dateByAddingComponents:oneYearAgoDateComponents toDate:[NSDate date] options:0];
+	NSLog(@"oneYearAgo: %@",[oneYearAgo ru_timeAgoString]);
+
+
+	
+	
+	NSDate* fiveSecondsAgo = [NSDate dateWithTimeIntervalSinceNow:-5.0f];
+	NSLog(@"fiveSecondsAgo: %@",[fiveSecondsAgo ru_timeAgoString]);
+	
+	NSDate* fiveMinutesAgo = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 5.0f)];
+	NSLog(@"fiveMinutesAgo: %@",[fiveMinutesAgo ru_timeAgoString]);
+	
+	NSDate* fiveHoursAgo = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 60.0f * 5.0f)];
+	NSLog(@"fiveHoursAgo: %@",[fiveHoursAgo ru_timeAgoString]);
+	
+	NSDate* fiveDaysAgo = [NSDate dateWithTimeIntervalSinceNow:-(60.0f * 60.0f * 24.0f * 5.0f)];
+	NSLog(@"fiveDaysAgo: %@",[fiveDaysAgo ru_timeAgoString]);
+	
+	NSDateComponents* fiveMonthsAgoDateComponents = [NSDateComponents new];
+	[fiveMonthsAgoDateComponents setMonth:-5];
+	
+	NSDate* fiveMonthsAgo = [gregorian dateByAddingComponents:fiveMonthsAgoDateComponents toDate:[NSDate date] options:0];
+	NSLog(@"fiveMonthsAgo: %@",[fiveMonthsAgo ru_timeAgoString]);
+
+	NSDateComponents* fiveYearsAgoDateComponents = [NSDateComponents new];
+	[fiveYearsAgoDateComponents setYear:-5];
+	
+	NSDate* fiveYearsAgo = [gregorian dateByAddingComponents:fiveYearsAgoDateComponents toDate:[NSDate date] options:0];
+	NSLog(@"fiveYearsAgo: %@",[fiveYearsAgo ru_timeAgoString]);
 }
 
 @end
