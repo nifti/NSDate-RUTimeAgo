@@ -80,27 +80,27 @@
 
 +(NSDate_RU_CalendarUnit)ru_timeAgoMinCalendarUnitWithDateCompontents:(NSDateComponents*)comps
 {
-	if (abs([comps year]) > 0)
+	if (labs([comps year]) > 0)
 	{
 		return NSDate_RU_CalendarUnitYear;
 	}
-	else if (abs([comps month]) > 0)
+	else if (labs([comps month]) > 0)
 	{
 		return NSDate_RU_CalendarUnitMonth;
 	}
-	else if (abs([comps day]) > 0)
+	else if (labs([comps day]) > 0)
 	{
 		return NSDate_RU_CalendarUnitDay;
 	}
-	else if (abs([comps hour]) > 0)
+	else if (labs([comps hour]) > 0)
 	{
 		return NSDate_RU_CalendarUnitHour;
 	}
-	else if (abs([comps minute]) > 0)
+	else if (labs([comps minute]) > 0)
 	{
 		return NSDate_RU_CalendarUnitMinute;
 	}
-	else if (abs([comps second]) >= 0)
+	else if (labs([comps second]) >= 0)
 	{
 		return NSDate_RU_CalendarUnitSecond;
 	}
